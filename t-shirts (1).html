@@ -1,0 +1,267 @@
+<html>
+    <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>T-Shirts — Fashion Forward</title>
+
+  <style>
+    :root{
+      --bg:#f7f7fb;
+      --card:#ffffff;
+      --muted:#6b6b6b;
+      --accent:#ff6f61;
+      --shadow: 0 6px 18px rgba(15,15,15,0.08);
+      --radius:10px;
+      --max-width:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    /* Header / Nav */
+    header{
+      width:100%;
+      background:#fff;
+      box-shadow: var(--shadow);
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .header-content{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px;
+      gap:12px;
+    }
+    .header-content h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:1px;
+      color:#111;
+    }
+    nav{ display:flex; align-items:center; gap:12px; position:relative; }
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:8px;
+      transition:all .18s ease;
+      font-weight:500;
+    }
+    nav a:hover{ color:var(--accent); background:rgba(255,111,97,0.06); transform:translateY(-2px); }
+    .cart-icon{
+      width:36px;
+      height:36px;
+      background:linear-gradient(135deg,#fff,#f3f3f4);
+      border-radius:8px;
+      margin-left:12px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
+      display:inline-block;
+      cursor:pointer;
+    }
+
+    /* Nav toggle (hamburger) */
+    #nav-toggle { display:none; background:none; border:none; padding:8px; border-radius:8px; cursor:pointer; }
+    #nav-toggle .bar { display:block; width:20px; height:2px; background:var(--muted); margin:3px 0; transition: transform .2s, opacity .2s; }
+
+    /* Main product layout */
+    main.product-container{
+      max-width:var(--max-width);
+      width:100%;
+      padding:28px 18px;
+      display:grid;
+      gap:20px;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      align-items:start;
+    }
+
+    /* Product card */
+    .product{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .product:hover{
+      transform:translateY(-6px);
+      box-shadow:0 14px 30px rgba(15,15,15,0.08);
+    }
+    .product img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:8px;
+      display:block;
+    }
+    .product h2{
+      font-size:16px;
+      margin:6px 0 0 0;
+      color:#111;
+    }
+    .product .price{
+      color:var(--accent);
+      font-weight:700;
+      margin:6px 0;
+    }
+    .add-to-cart{
+      margin-top:auto;
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      padding:10px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      transition:background .12s ease, transform .08s ease;
+    }
+    .add-to-cart:hover{ background:#ff3d2e; transform:translateY(-2px); }
+
+    /* Footer */
+    footer{
+      width:100%;
+      background:transparent;
+      padding:20px 0;
+      text-align:center;
+      color:var(--muted);
+      margin-top:30px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:768px){
+      .header-content{padding:12px}
+      nav ul{
+        position:absolute;
+        top:64px;
+        right:16px;
+        background:var(--card);
+        flex-direction:column;
+        padding:10px;
+        border-radius:10px;
+        box-shadow:var(--shadow);
+        display:none;
+        min-width:160px;
+        z-index:120;
+      }
+      nav ul.open { display:flex; }
+      #nav-toggle { display:inline-flex; align-items:center; justify-content:center; }
+      nav { gap:8px; }
+      .product img{ height:180px }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>FASHION FORWARD</h1>
+            <nav>
+                <button id="nav-toggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul id="nav-list">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="new-arrivals.html">New Arrivals</a></li>
+                    <li><a href="best-sellers.html">Best Sellers</a></li>
+                    <li><a href="sale.html">Sale</a></li>
+                </ul>
+                <div class="cart-icon" title="View cart" onclick="location.href='cart.html'"></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="product-container">
+        <!-- Products -->
+        <section class="product" id="product1">
+            <img src="https://i.pinimg.com/736x/dd/7c/1f/dd7c1f49bcaeddc602e6bda801235bf1.jpg" alt="Pro1">
+            <h2>Product 1</h2>
+            <p class="price">$19.99</p>
+            <button class="add-to-cart" onclick="addToCart('Product 1', 19.99, 'https://i.pinimg.com/736x/dd/7c/1f/dd7c1f49bcaeddc602e6bda801235bf1.jpg')">Add to Cart</button>
+        </section>
+        <section class="product" id="product2">
+            <img src="https://images.meesho.com/images/products/391471926/dblcr_512.jpg" alt="Pro2">
+            <h2>Product 2</h2>
+            <p class="price">$21.99</p>
+            <button class="add-to-cart" onclick="addToCart('Product 2', 21.99, 'https://images.meesho.com/images/products/391471926/dblcr_512.jpg')">Add to Cart</button>
+        </section>
+        <section class="product" id="product3">
+            <img src="https://triprindia.com/cdn/shop/files/TBRHNFUL-D1443_800x.jpg?v=1738823402" alt="Pro3">
+            <h2>Product 3</h2>
+            <p class="price">$24.99</p>
+            <button class="add-to-cart" onclick="addToCart('Product 3', 24.99, 'https://triprindia.com/cdn/shop/files/TBRHNFUL-D1443_800x.jpg?v=1738823402')">Add to Cart</button>
+        </section>
+        <section class="product" id="product4">
+            <img src="https://www.redwolf.in/image/cache/catalog/featured_categories/t-shirts-for-men-featured-480x480.jpg?m=1709881172" alt="Pro4">
+            <h2>Product 4</h2>
+            <p class="price">$9.99</p>
+            <button class="add-to-cart" onclick="addToCart('Product 4', 9.99, 'https://www.redwolf.in/image/cache/catalog/featured_categories/t-shirts-for-men-featured-480x480.jpg?m=1709881172')">Add to Cart</button>
+        </section>
+        <!-- Additional eCommerce sections if needed -->
+    </main>
+    
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <footer>
+        <p>© 2023 Our Online Store. All rights reserved.</p>
+    </footer>
+    <script>
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price, image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${name} added to cart!`);
+        }
+
+        // Nav toggle for mobile
+        (function(){
+            const toggle = document.getElementById('nav-toggle');
+            const navList = document.getElementById('nav-list');
+            if (!toggle || !navList) return;
+            toggle.addEventListener('click', () => {
+                navList.classList.toggle('open');
+            });
+            // Close menu when clicking outside on small screens
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && navList.classList.contains('open')) {
+                    const inside = e.composedPath().includes(navList) || e.composedPath().includes(toggle);
+                    if (!inside) navList.classList.remove('open');
+                }
+            });
+            // Close on resize to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) navList.classList.remove('open');
+            });
+        })();
+    </script>
+
+</body></html>
